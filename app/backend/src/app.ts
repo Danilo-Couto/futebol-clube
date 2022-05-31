@@ -22,7 +22,7 @@ class App {
 
   // ...
   public start(PORT: string | number):void {
-    this.app.listen(PORT);
+    this.app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   }
 }
 
