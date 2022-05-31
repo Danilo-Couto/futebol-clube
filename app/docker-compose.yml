@@ -2,9 +2,9 @@ version: '3.9'
 services:
   frontend:
     build: ./frontend
-    container_name: app_front
     ports: 
       - 3000:3000
+    container_name: app_frontend
     depends_on:
       backend:
         condition: service_healthy
@@ -17,7 +17,7 @@ services:
   backend:
     build: ./backend
     container_name: app_backend
-    ports: 
+    ports:
       - 3001:3001
     depends_on:
       db:
