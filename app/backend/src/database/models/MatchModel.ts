@@ -4,8 +4,9 @@ import sequelize from '.';
 export default class MatchModel extends Model {
   homeTeam: number;
   homeTeamGoals: number;
+  awayTeam: number;
   awayTeamGoals: number;
-  inProgress = false;
+  inProgress: boolean;
 }
 
 MatchModel.init({
