@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '.';
-import Match from './MatchModel';
+import MatchModel from './MatchModel';
 
 export default class TeamModel extends Model {
   id:number;
@@ -16,5 +16,8 @@ TeamModel.init({
   timestamps: false,
 });
 
-Match.belongsTo(TeamModel, { foreignKey: 'homeTeam', as: 'home_team' }); // objeto é do obj pertencido
-Match.belongsTo(TeamModel, { foreignKey: 'awayTeam', as: 'away_team' });
+MatchModel.belongsTo(TeamModel, { foreignKey: 'home_team', as: 'teamHome' }); // objeto é do obj pertencido
+MatchModel.belongsTo(TeamModel, { foreignKey: 'away_team', as: 'teamAway' });
+
+TeamModel.hasMany(MatchModel, { foreignKey: 'home_team', as: 'teamHome' });
+TeamModel.hasMany(MatchModel, { foreignKey: 'away_team', as: 'teamAway' });
