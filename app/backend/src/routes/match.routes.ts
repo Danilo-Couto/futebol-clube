@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import ControllerFactoryTeams from '../controllerFactories/TeamFactory';
+import MatchController from '../controllers/MatchController';
 
 const matchRoutes = Router();
-const matchController = ControllerFactoryTeams.create();
+const matchController = new MatchController();
 
 matchRoutes.get('/', matchController.findAll);
 
