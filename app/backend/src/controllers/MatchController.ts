@@ -1,4 +1,4 @@
-import { Request, Response } from 'express';
+/* import { Request, Response } from 'express';
 
 export default class MatchController {
   constructor(private teamsService: ITeamService) { }
@@ -10,3 +10,5 @@ export default class MatchController {
       : res.status(200).json(teams);
   };
 }
+
+ */
