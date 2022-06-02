@@ -60,9 +60,11 @@ export interface IMatch {
   awayTeamGoals: number
   inProgress: boolean
 }
-export interface IMatchModel {
-  findAll():Promise<any[]>
-}
+// export interface IMatchModel {
+//   findAll(model: {
+//     include: { model: TeamModel; as: string;
+//       attributes: { exclude: string[]; }; }[]; }):Promise<IMatch[]>;
+// }
 
 export interface IMatchService {
   findAll():Promise<IMatch[]>
