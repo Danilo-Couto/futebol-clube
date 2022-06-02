@@ -10,6 +10,7 @@ export interface JwtConfig {
   algorithm: jwt.Algorithm;
 }
 
+// USER
 export interface IUser {
   dataValues?: any;
   id: number;
@@ -24,13 +25,30 @@ export interface IUserModel {
   findAll(): Promise<IUser[]>
   getAll():Promise<IUser[]>
   create(user: IUser): Promise<IUser>
+  findOne(user: { where: { email: string; }; }): any;
 }
 
+// LOGIN
 export interface IloginService {
   login(email: string, password: string): Promise<any>
   validateLogin?(req: Request, res: Response): Promise<any>
 }
 
-export interface ILoginModel {
+export interface ILoginModel { // talves não precise deste, apenas passar esta assinatura para IUserModel
   findOne(user: { where: { email: string; }; }): any;
+}
+
+// TEAMS
+export interface ITeam {
+  id: number;
+  teamName:string;
+}
+export interface ITeamModel {
+  findAll():Promise<any[]>
+  findByPk(id: number):Promise<ITeam>;
+}
+
+export interface ITeamService {
+  findAll():Promise<ITeam[]>
+  findByPk(id: any):Promise<ITeam>;
 }

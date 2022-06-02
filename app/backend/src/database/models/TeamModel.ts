@@ -2,12 +2,12 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '.';
 import Match from './match';
 
-class Team extends Model {
+export default class TeamModel extends Model {
   id:number;
   teamName:string;
 }
 
-Team.init({
+TeamModel.init({
   teamName: { type: DataTypes.STRING, allowNull: false },
 }, {
   sequelize,
@@ -16,7 +16,5 @@ Team.init({
   timestamps: false,
 });
 
-Match.belongsTo(Team, { foreignKey: 'homeTeam', as: 'home_team' }); // objeto é do obj pertencido
-Match.belongsTo(Team, { foreignKey: 'awayTeam', as: 'away_team' });
-
-export default Team;
+Match.belongsTo(TeamModel, { foreignKey: 'homeTeam', as: 'home_team' }); // objeto é do obj pertencido
+Match.belongsTo(TeamModel, { foreignKey: 'awayTeam', as: 'away_team' });

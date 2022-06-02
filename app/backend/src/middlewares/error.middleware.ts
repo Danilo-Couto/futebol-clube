@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { IsJoi } from '../interfaces/interfaces';
 
-export default function errorMidleware(
+export default function handleErrors(
   err: IsJoi,
   _req: Request,
   res: Response,
