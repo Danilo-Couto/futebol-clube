@@ -1,11 +1,11 @@
-import TeamsService from '../services/TeamService';
-import TeamController from '../controllers/TeamController';
-import TeamModel from '../database/models/TeamModel';
+/* import MatchController from '../controllers/MatchController';
+import MatchService from '../services/MatchService';
 
 export default class ControllerFactoryMatch {
   public static create() {
-    const teamService = new TeamsService(TeamModel);
-    const teamController = new TeamController(teamService);
-    return teamController;
+    const matchService = new MatchService();
+    const matchController = new MatchController(matchService);
+    return matchController;
   }
 }
+ */
