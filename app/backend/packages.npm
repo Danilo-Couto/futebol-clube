@@ -1,2 +1,7 @@
 bcrypt
-bcryptjs 
+bcryptjs
+joi
+jsonwebtoken
+cors
+file-system
+

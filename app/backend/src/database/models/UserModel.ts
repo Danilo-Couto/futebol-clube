@@ -1,14 +1,15 @@
 import { DataTypes, Model } from 'sequelize';
 import db from '.';
 
-export default class User extends Model {
+export default class UserModel extends Model {
+  id: number;
   username: string;
   role: string;
   email: string;
   password: string;
 }
 
-User.init({
+UserModel.init({
   username: DataTypes.STRING,
   role: DataTypes.STRING,
   email: DataTypes.STRING,
