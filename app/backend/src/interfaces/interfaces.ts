@@ -52,3 +52,18 @@ export interface ITeamService {
   findAll():Promise<ITeam[]>
   findByPk(id: any):Promise<ITeam>;
 }
+
+// MATCHES
+export interface IMatch {
+  homeTeam: number
+  homeTeamGoals: number
+  awayTeamGoals: number
+  inProgress: boolean
+}
+export interface IMatchModel {
+  findAll():Promise<any[]>
+}
+
+export interface IMatchService {
+  findAll():Promise<IMatch[]>
+}

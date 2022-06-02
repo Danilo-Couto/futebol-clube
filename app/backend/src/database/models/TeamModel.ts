@@ -1,6 +1,6 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '.';
-import Match from './match';
+import Match from './MatchModel';
 
 export default class TeamModel extends Model {
   id:number;

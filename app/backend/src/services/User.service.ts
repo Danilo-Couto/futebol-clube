@@ -1,4 +1,4 @@
-import * as bcrypt from 'bcrypt';
+import * as bcryptjs from 'bcryptjs';
 import { generatedToken } from '../utils/Token';
 import { ILoginModel, IUser } from '../interfaces/interfaces';
 
@@ -18,7 +18,7 @@ export default class UserService {
     const userFound = await this.getUserByEmail(email);
     if (!userFound) return accessDenied;
 
-    const isValidPass = await bcrypt.compare(reqPass, userFound.password);
+    const isValidPass = await bcryptjs.compare(reqPass, userFound.password);
     if (!isValidPass) return accessDenied;
 
     const { dataValues } = userFound;

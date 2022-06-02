@@ -4,6 +4,9 @@ services:
     build: ./frontend
     platform: linux/x86_64 
     # ...
+    container_name: frontend
+    ports:
+      - 3000:3000
     depends_on:
       backend:
         condition: service_healthy
@@ -17,6 +20,9 @@ services:
     build: ./backend
     platform: linux/x86_64
     restart: 'always'
+    container_name: backend
+    ports:
+      - 3001:3001
     # ...
     depends_on:
       db:

@@ -1,14 +1,14 @@
 import { DataTypes, Model } from 'sequelize';
 import sequelize from '.';
 
-class Match extends Model {
+export default class MatchModel extends Model {
   homeTeam: number;
   homeTeamGoals: number;
   awayTeamGoals: number;
   inProgress = false;
 }
 
-Match.init({
+MatchModel.init({
   homeTeam: {
     type: DataTypes.INTEGER,
     allowNull: false,
@@ -28,5 +28,3 @@ Match.init({
   underscored: true,
   timestamps: false,
 });
-
-export default Match;
