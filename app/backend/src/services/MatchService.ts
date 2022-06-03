@@ -1,3 +1,4 @@
+import { IMatch } from '../interfaces/interfaces';
 import MatchModel from '../database/models/MatchModel';
 import TeamModel from '../database/models/TeamModel';
 
@@ -20,5 +21,10 @@ export default class MatchService {
       ],
     });
     return matches;
+  };
+
+  create = async (body: IMatch) => {
+    const match = await this.matchModel.create(body);
+    return match;
   };
 }
