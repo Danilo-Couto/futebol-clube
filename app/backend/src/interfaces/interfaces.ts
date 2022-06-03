@@ -50,12 +50,9 @@ export interface ITeamService {
 
 // MATCHES
 export interface IMatch {
-  homeTeam: number
-  homeTeamGoals: number
-  awayTeamGoals: number
-  inProgress: boolean
-}
-
-export interface IMatchService {
-  findAll():Promise<IMatch[]>
+  homeTeam: number;
+  homeTeamGoals: number;
+  awayTeam: number;
+  awayTeamGoals: number;
+  inProgress: boolean;
 }
