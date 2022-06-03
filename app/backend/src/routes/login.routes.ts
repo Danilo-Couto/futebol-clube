@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import UserController from '../controllers/User.controller';
+import UserController from '../controllers/UserController';
 import { loginJoi } from '../middlewares/validalogin.middleware';
 
 const loginRouter = Router();
