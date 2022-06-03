@@ -43,11 +43,6 @@ export interface ITeam {
   id: number;
   teamName:string;
 }
-export interface ITeamModel {
-  findAll():Promise<any[]>
-  findByPk(id: number):Promise<ITeam>;
-}
-
 export interface ITeamService {
   findAll():Promise<ITeam[]>
   findByPk(id: any):Promise<ITeam>;
@@ -60,11 +55,6 @@ export interface IMatch {
   awayTeamGoals: number
   inProgress: boolean
 }
-// export interface IMatchModel {
-//   findAll(model: {
-//     include: { model: TeamModel; as: string;
-//       attributes: { exclude: string[]; }; }[]; }):Promise<IMatch[]>;
-// }
 
 export interface IMatchService {
   findAll():Promise<IMatch[]>

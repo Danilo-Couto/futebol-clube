@@ -1,8 +1,8 @@
 import { Router } from 'express';
-import ControllerFactoryTeams from '../controllerFactories/TeamFactory';
+import TeamController from '../controllers/TeamController';
 
 const teamRouter = Router();
-const teamController = ControllerFactoryTeams.create();
+const teamController = new TeamController();
 
 teamRouter.get('/', teamController.findAll);
 teamRouter.get('/:id', teamController.findByPk);

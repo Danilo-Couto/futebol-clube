@@ -1,4 +1,4 @@
-import TeamsService from '../services/TeamService';
+/* import TeamsService from '../services/TeamService';
 import TeamController from '../controllers/TeamController';
 import TeamModel from '../database/models/TeamModel';
 
@@ -9,3 +9,4 @@ export default class ControllerFactoryTeam {
     return teamController;
   }
 }
+ */

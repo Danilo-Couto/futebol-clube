@@ -1,9 +1,9 @@
 import { Request, Response } from 'express';
 import { verifiedToken } from '../utils/Token';
-import { IloginService } from '../interfaces/interfaces';
+import UserService from '../services/UserService';
 
 export default class UserController {
-  constructor(private userService: IloginService) { }
+  constructor(private userService = new UserService()) { }
 
   public login = async (req: Request, res: Response) => {
     const { email, password } = req.body;

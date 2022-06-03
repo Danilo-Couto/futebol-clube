@@ -1,15 +1,15 @@
 import * as bcryptjs from 'bcryptjs';
 import { generatedToken } from '../utils/Token';
-import { ILoginModel, IUser } from '../interfaces/interfaces';
+import UserModel from '../database/models/UserModel';
 
 const accessDenied = 'Incorrect email or password';
 
 export default class UserService {
-  constructor(private loginModel: ILoginModel) {
+  constructor(private userModel = UserModel) {
   }
 
-  getUserByEmail = async (email: string): Promise<IUser> => {
-    const userFound = await this.loginModel
+  getUserByEmail = async (email: string) => {
+    const userFound = await this.userModel
       .findOne({ where: { email } });
     return userFound;
   };
@@ -20,10 +20,8 @@ export default class UserService {
 
     const isValidPass = await bcryptjs.compare(reqPass, userFound.password);
     if (!isValidPass) return accessDenied;
-
-    const { dataValues } = userFound;
-    const token = generatedToken(dataValues);
-    const { id, username, role } = dataValues;
+    const token = generatedToken(userFound);
+    const { id, username, role } = userFound;
 
     return { user: { id, username, role, email }, token };
   };
