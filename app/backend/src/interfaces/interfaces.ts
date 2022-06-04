@@ -50,6 +50,7 @@ export interface ITeamService {
 
 // MATCHES
 export interface IMatch {
+  id: number;
   homeTeam: number;
   homeTeamGoals: number;
   awayTeam: number;

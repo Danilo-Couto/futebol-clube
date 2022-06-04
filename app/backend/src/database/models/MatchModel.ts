@@ -2,6 +2,7 @@ import { DataTypes, Model } from 'sequelize';
 import sequelize from '.';
 
 export default class MatchModel extends Model {
+  id: number;
   homeTeam: number;
   homeTeamGoals: number;
   awayTeam: number;

@@ -6,5 +6,5 @@ export default class TeamService {
 
   findAll = async () => this.teamModel.findAll();
 
-  findByPk = async (id: Identifier | undefined) => this.teamModel.findByPk(id);
+  findByPk = async (id: Identifier | undefined) => this.teamModel.findByPk(id, { raw: true });
 }
