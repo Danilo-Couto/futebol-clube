@@ -3,6 +3,8 @@ import { verifiedToken } from '../utils/Token';
 import MatchService from '../services/MatchService';
 import TeamService from '../services/TeamService';
 
+const noTeam = 'There is no team with such id!';
+
 export default class MatchController {
   constructor(private matchService = new MatchService()) { }
 
@@ -18,8 +20,9 @@ export default class MatchController {
 
     const arrayTeams = await Promise.all([homeTeam, awayTeam].map(async (team) =>
       new TeamService().findByPk(team)));
+
     if (arrayTeams.some((team) => team === null)) {
-      return res.status(404).json({ message: 'There is no team with such id!' });
+      return res.status(404).json({ message: noTeam });
     }
 
     const token = req.headers.authorization;
@@ -40,7 +43,19 @@ export default class MatchController {
     const updatedMatch = await this.matchService.update(Number(id));
 
     return !updatedMatch
-      ? res.status(401).json({ message: 'There is no team with such id!' })
+      ? res.status(401).json({ message: noTeam })
       : res.status(200).json({ message: 'Finished' });
+  };
+
+  public updateByID = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { homeTeamGoals, awayTeamGoals } = req.body;
+
+    const updatedMatch = await this.matchService
+      .updateById(Number(id), Number(homeTeamGoals), Number(awayTeamGoals));
+
+    return !updatedMatch
+      ? res.status(401).json({ message: 'Erro!' })
+      : res.status(200).json({ message: 'Match Updated' });
   };
 }

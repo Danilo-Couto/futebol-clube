@@ -7,7 +7,6 @@ import matchRoutes from './routes/match.routes';
 
 class App {
   public app: express.Express;
-  // ...
 
   constructor() {
     this.app = express();
@@ -33,7 +32,6 @@ class App {
     this.app.use(handleErrors);
   }
 
-  // ...
   public start(PORT: string | number):void {
     this.app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
   }
