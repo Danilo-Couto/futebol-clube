@@ -18,6 +18,3 @@ TeamModel.init({
 
 MatchModel.belongsTo(TeamModel, { foreignKey: 'home_team', as: 'teamHome' }); // objeto é do obj pertencido
 MatchModel.belongsTo(TeamModel, { foreignKey: 'away_team', as: 'teamAway' });
-
-// TeamModel.hasMany(MatchModel, { foreignKey: 'home_team', as: 'teamHome' });
-// TeamModel.hasMany(MatchModel, { foreignKey: 'away_team', as: 'teamAway' });

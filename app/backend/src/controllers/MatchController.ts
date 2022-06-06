@@ -20,7 +20,6 @@ export default class MatchController {
 
     const arrayTeams = await Promise.all([homeTeam, awayTeam].map(async (team) =>
       new TeamService().findByPk(team)));
-
     if (arrayTeams.some((team) => team === null)) {
       return res.status(404).json({ message: noTeam });
     }
@@ -32,7 +31,6 @@ export default class MatchController {
     if (!decoded) return res.status(400).json({ message: 'Not Authorized' });
 
     const matchCreated = await this.matchService.create(req.body);
-
     return matchCreated.message
       ? res.status(401).json({ message: matchCreated.message })
       : res.status(201).json(matchCreated.matchCreated);

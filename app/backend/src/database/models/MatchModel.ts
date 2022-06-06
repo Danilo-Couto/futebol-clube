@@ -8,19 +8,18 @@ export default class MatchModel extends Model {
   awayTeam: number;
   awayTeamGoals: number;
   inProgress: boolean;
+  teamHome: any;
 }
 
 MatchModel.init({
   homeTeam: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    // references: { model: 'teams', key: 'id' },
   },
   homeTeamGoals: DataTypes.INTEGER,
   awayTeam: {
     type: DataTypes.INTEGER,
     allowNull: false,
-    // references: { model: 'teams', key: 'id' },
   },
   awayTeamGoals: DataTypes.INTEGER,
   inProgress: DataTypes.BOOLEAN,

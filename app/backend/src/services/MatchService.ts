@@ -21,7 +21,6 @@ export default class MatchService {
         },
       ],
     })
-    // return matches;
   ;
 
   create = async (body: IMatch) => {
