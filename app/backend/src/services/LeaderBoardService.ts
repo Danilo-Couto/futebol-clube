@@ -31,40 +31,25 @@ export default class LeaderBoardService {
   homeDataMatch = async (team: number) => { // como mandante
     const objMatch = { victories: 0, losses: 0, drawns: 0 };
     const matchesByTeamHome = (await this.matches).filter((match) => match.homeTeam === team); 
-      
-    matchesByTeamHome.map((match)=> {
-      if(match.homeTeamGoals > match.awayTeamGoals) { objMatch.victories +=1 }
-      else if (match.homeTeamGoals < match.awayTeamGoals) { objMatch.losses +=1 }
-      else { objMatch.drawns +=1 }
-      return objMatch;
-    }).map((match)=> {
-    const objMatch = { victories: 0, losses: 0, drawns: 0 };
-      if (match.victories !== 0 ) { objMatch.victories +=1 }
-      else if (match.losses !== 0 ) { objMatch.losses +=1 }
-      else { objMatch.drawns +=1 }
-      return objMatch
-    })
-    return objMatch;
+
+    return matchesByTeamHome.reduce((acc, curr) => {
+      if(curr.homeTeamGoals > curr.awayTeamGoals) { acc.victories +=1 }
+      else if (curr.homeTeamGoals < curr.awayTeamGoals) { acc.losses +=1 }
+      else { acc.drawns +=1 }
+      return acc;
+    }, { victories: 0, losses: 0, drawns: 0 }) // acc é a saída
   }
 
   awayDataMatch = async (team: number) => { // como visitante
     const objMatch = { victories: 0, losses: 0, drawns: 0 };
-
     const matchesByAwayHome = ((await this.matches)).filter((match) => match.awayTeam === team); 
       
-    matchesByAwayHome.map((match)=> {
-      if (match.homeTeamGoals < match.awayTeamGoals) { objMatch.victories +=1 }
-      else if (match.homeTeamGoals > match.awayTeamGoals) { objMatch.losses +=1 }
-      else { objMatch.drawns +=1 }
-      return objMatch;
-    }).map((match)=> {
-    const objMatch = { victories: 0, losses: 0, drawns: 0 };
-      if (match.victories !== 0 ) { objMatch.victories +=1 }
-      else if (match.losses !== 0 ) { objMatch.losses +=1 }
-      else { objMatch.drawns +=1 }
-      return objMatch
-    })
-    return objMatch;
+    return matchesByAwayHome.reduce((acc, curr) => {
+      if (curr.homeTeamGoals < curr.awayTeamGoals) { acc.victories +=1 }
+      else if (curr.homeTeamGoals > curr.awayTeamGoals) { acc.losses +=1 }
+      else { acc.drawns +=1 }
+      return acc;
+    }, { victories: 0, losses: 0, drawns: 0 })
   }
 
   dataMatch = async (team: number) => {
@@ -79,10 +64,9 @@ export default class LeaderBoardService {
   
   totalPoints = async (team: number) => (await this.dataMatch(team)).victories * 3 + (await this.dataMatch(team)).drawns * 1;
 
-  efficiency = async (team: number ) => (await this.totalPoints(team)/ (await this.totalGames(team)*3)*100).toFixed(2)
-
+  efficiency = async (team: number ) => +(await this.totalPoints(team)/ (await this.totalGames(team)*3)*100).toFixed(2)
   leaderBoard = async () => {
-    return Promise.all( 
+    return (await Promise.all(
       (await this.teams).map(async (team) => ({
         name: team.teamName,
         totalPoints: await this.totalPoints(team.id),
@@ -95,6 +79,6 @@ export default class LeaderBoardService {
         goalsBalance: await this.goalsBalance(team.id),
         efficiency: await this.efficiency(team.id)
       }))
-    );
+    )).sort((a,b) => (b.totalPoints - a.totalPoints || b.totalVictories - a.totalVictories || b.goalsBalance - a.goalsBalance || b.goalsFavor - a.goalsFavor || b.goalsOwn - a.goalsOwn));
   }; 
  }

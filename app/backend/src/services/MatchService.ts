@@ -45,7 +45,6 @@ export default class MatchService {
 
   updateById = async (id: Identifier | undefined, homeTeamGoals: number, awayTeamGoals: number) => {
     await this.matchModel.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
-
     const updatedMatch = await this.matchModel.findByPk(id, { raw: true });
     return updatedMatch;
   };

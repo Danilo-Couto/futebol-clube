@@ -56,4 +56,12 @@ export default class MatchController {
       ? res.status(401).json({ message: 'Erro!' })
       : res.status(200).json({ message: 'Match Updated' });
   };
+
+  public findByPk = async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const match = await this.matchService.findByPk(id);
+    return (!match)
+      ? res.status(401).json({ message: 'Match not found' })
+      : res.status(200).json(match);
+  };
 }
