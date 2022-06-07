@@ -6,5 +6,7 @@ const leaderBoardRoutes = Router();
 const leaderBoardController = new LeaderBoardController();
 
 leaderBoardRoutes.get('/', leaderBoardController.getLeaderBoard);
+leaderBoardRoutes.get('/home', leaderBoardController.getLeaderBoardHomeTeam);
+leaderBoardRoutes.get('/away', leaderBoardController.getLeaderBoardAwayTeam);
 
 export default leaderBoardRoutes;

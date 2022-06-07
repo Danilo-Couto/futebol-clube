@@ -31,6 +31,7 @@ class App {
     this.app.use('/teams', teamsRouter);
     this.app.use('/matches', matchRoutes);
     this.app.use('/leaderboard', leaderBoardRoutes);
+
     this.app.use(handleErrors);
   }
 
