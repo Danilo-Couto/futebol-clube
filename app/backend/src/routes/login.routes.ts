@@ -1,11 +1,11 @@
 import { Router } from 'express';
 import UserController from '../controllers/UserController';
-import { loginJoi } from '../middlewares/validalogin.middleware';
+import { isLoginValid, isTokenExists } from '../middlewares/validations.middleware';
 
 const loginRouter = Router();
 const userController = new UserController();
 
-loginRouter.post('/', loginJoi, userController.login);
-loginRouter.get('/validate', userController.validateLogin);
+loginRouter.post('/', isLoginValid, userController.login);
+loginRouter.get('/validate', isTokenExists, userController.validateLogin);
 
 export default loginRouter;

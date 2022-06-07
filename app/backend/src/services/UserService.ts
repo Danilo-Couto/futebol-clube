@@ -20,6 +20,7 @@ export default class UserService {
 
     const isValidPass = await bcryptjs.compare(reqPass, userFound.password);
     if (!isValidPass) return accessDenied;
+    
     const token = generatedToken(userFound);
     const { id, username, role } = userFound;
 

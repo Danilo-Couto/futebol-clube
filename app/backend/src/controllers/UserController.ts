@@ -1,5 +1,4 @@
 import { Request, Response } from 'express';
-import { verifiedToken } from '../utils/Token';
 import UserService from '../services/UserService';
 
 export default class UserController {
@@ -15,15 +14,23 @@ export default class UserController {
   };
 
   public validateLogin = (req: Request, res: Response) => {
-    const token = req.headers.authorization;
-    if (!token) return res.status(401).json({ message: 'Token not found' });
-    const decoded = verifiedToken(token);
-    req.body.userFound = decoded;
+    
     const { role } = req.body.userFound;
     return role
       ? res.status(200).json(role)
       : res.status(401).json({ message: 'Invalid token' });
   };
+
+  // public validateLogin = (req: Request, res: Response) => {
+  //   const token = req.headers.authorization;
+  //   if (!token) return res.status(401).json({ message: 'Token not found' });
+  //   const decoded = verifiedToken(token);
+  //   req.body.userFound = decoded;
+  //   const { role } = req.body.userFound;
+  //   return role
+  //     ? res.status(200).json(role)
+  //     : res.status(401).json({ message: 'Invalid token' });
+  // };
 
   get validaToken() { return this.validateLogin; }
 }
