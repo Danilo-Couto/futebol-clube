@@ -61,6 +61,7 @@ export default class LeaderBoardService {
   totalPoints = async (team: number) => (await this.dataMatch(team)).victories * 3 + (await this.dataMatch(team)).drawns * 1;
 
   efficiency = async (team: number ) => +(await this.totalPoints(team)/ (await this.totalGames(team)*3)*100).toFixed(2)
+  
   leaderBoard = async () => {
     return (await Promise.all(
       (await this.teams).map(async (team) => ({

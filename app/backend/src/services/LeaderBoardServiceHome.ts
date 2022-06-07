@@ -14,8 +14,7 @@ export default class LeaderBoardServiceHome {
   matches = this.findAllMatches();
   teams = this.allTeams();
 
-  totalGames = async (team: number) => await this.matchModel.count({ where: { 
-       homeTeam: team , inProgress: false }});
+  totalGames = async (team: number) => await this.matchModel.count({ where: { homeTeam: team , inProgress: false }});
 
   goalsFavor = async (team: number) => 
     await this.matchModel.sum('home_team_goals', { where: {homeTeam: team, inProgress: false} })
