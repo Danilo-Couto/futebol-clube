@@ -38,12 +38,12 @@ export default class MatchService {
   findByPk = async (id: Identifier | undefined) => this.matchModel.findByPk(id, { raw: true });
 
   finishMatch = async (id: Identifier | undefined) => {
-    const updatedMatch = await this.matchModel.update({ inProgress: false }, { where: { id } });
-    return updatedMatch;
-  };
+    await this.matchModel.update({ inProgress: false }, { where: { id } });
+    return this.findByPk(id);
+  }
 
-  updateScore = async (id: Identifier | undefined, homeTeamGoals: number, awayTeamGoals: number) => {    
-    const updatedMatch = await this.matchModel.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
-    return updatedMatch;
-  };
+  updateScore = async (id: Identifier | undefined, homeTeamGoals: number, awayTeamGoals: number) => {
+    await this.matchModel.update({ homeTeamGoals, awayTeamGoals }, { where: { id } });
+    return this.findByPk(id);
+  }
 }
