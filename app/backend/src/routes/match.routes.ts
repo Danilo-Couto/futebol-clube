@@ -8,6 +8,7 @@ const matchController = new MatchController();
 
 matchRoutes.patch('/:id/finish', matchController.finishMatch);
 matchRoutes.patch('/:id', matchController.updateScore);
+matchRoutes.get('/:id', matchController.findByPk);
 matchRoutes.get('/', matchController.findAll);
 matchRoutes.post('/', isTeamsExists, isTokenExists, matchController.create);
 
