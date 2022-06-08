@@ -11,9 +11,6 @@ export default class LeaderBoardServiceAway {
   findAllMatches = async () => this.matchModel.findAll({ where: {inProgress: false}});
   allTeams = () => this.teamService.findAll();
 
-  matches = this.findAllMatches();
-  teams = this.allTeams();
-
   totalGames = async (team: number) => await this.matchModel.count({ where: { awayTeam: team, inProgress: false}});
 
   goalsFavor = async (team: number) => 
@@ -25,7 +22,7 @@ export default class LeaderBoardServiceAway {
   goalsBalance = async (team: number) => await this.goalsFavor(team) - await this.goalsOwn(team);
 
   awayDataMatch = async (team: number) => { // como visitante
-    const matchesByAwayHome = ((await this.matches)).filter((match) => match.awayTeam === team); 
+    const matchesByAwayHome = ((await this.findAllMatches())).filter((match) => match.awayTeam === team); 
     return matchesByAwayHome.reduce((acc, curr) => {
       if (curr.homeTeamGoals < curr.awayTeamGoals) { acc.victories +=1 }
       else if (curr.homeTeamGoals > curr.awayTeamGoals) { acc.losses +=1 }
@@ -34,12 +31,12 @@ export default class LeaderBoardServiceAway {
     }, { victories: 0, losses: 0, drawns: 0 })
   }
   
-  totalPoints = async (team: number) => (await this.awayDataMatch(team)).victories * 3 + (await this.awayDataMatch(team)).drawns * 1;
+  totalPoints = async (team: number) => (await this.awayDataMatch(team)).victories * 3 + (await this.awayDataMatch(team)).drawns;
 
   efficiency = async (team: number ) => +(await this.totalPoints(team)/ (await this.totalGames(team)*3)*100).toFixed(2)
   leaderBoardAway = async () => {
     return (await Promise.all(
-      (await this.teams).map(async (team) => ({
+      (await this.allTeams()).map(async (team) => ({
         name: team.teamName,
         totalPoints: await this.totalPoints(team.id),
         totalGames: await this.totalGames(team.id),

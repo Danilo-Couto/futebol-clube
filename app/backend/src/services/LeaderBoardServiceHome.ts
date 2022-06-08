@@ -11,9 +11,6 @@ export default class LeaderBoardServiceHome {
   findAllMatches = async () => this.matchModel.findAll({ where: {inProgress: false}});
   allTeams = () => this.teamService.findAll();
 
-  matches = this.findAllMatches();
-  teams = this.allTeams();
-
   totalGames = async (team: number) => await this.matchModel.count({ where: { homeTeam: team , inProgress: false }});
 
   goalsFavor = async (team: number) => 
@@ -25,7 +22,7 @@ export default class LeaderBoardServiceHome {
   goalsBalance = async (team: number) => await this.goalsFavor(team) - await this.goalsOwn(team);
 
   homeDataMatch = async (team: number) => { // como mandante
-    const matchesByTeamHome = (await this.matches).filter((match) => match.homeTeam === team);
+    const matchesByTeamHome = (await this.findAllMatches()).filter((match) => match.homeTeam === team);
     return matchesByTeamHome.reduce((acc, curr) => {
       if(curr.homeTeamGoals > curr.awayTeamGoals) { acc.victories +=1 }
       else if (curr.homeTeamGoals < curr.awayTeamGoals) { acc.losses +=1 }
@@ -34,12 +31,12 @@ export default class LeaderBoardServiceHome {
     }, { victories: 0, losses: 0, drawns: 0 })
   }
 
-  totalPoints = async (team: number) => (await this.homeDataMatch(team)).victories * 3 + (await this.homeDataMatch(team)).drawns * 1;
+  totalPoints = async (team: number) => (await this.homeDataMatch(team)).victories * 3 + (await this.homeDataMatch(team)).drawns;
 
   efficiency = async (team: number ) => +(await this.totalPoints(team)/ (await this.totalGames(team)*3)*100).toFixed(2)
   leaderBoardHome = async () => {
     return (await Promise.all(
-      (await this.teams).map(async (team) => ({
+      (await this.allTeams()).map(async (team) => ({
         name: team.teamName,
         totalPoints: await this.totalPoints(team.id),
         totalGames: await this.totalGames(team.id),

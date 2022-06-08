@@ -44,7 +44,6 @@ export default class MatchController {
 
     const updatedMatch = await this.matchService
       .updateScore(Number(id), Number(homeTeamGoals), Number(awayTeamGoals));
-      console.log(updatedMatch);
 
     return !updatedMatch
       ? res.status(401).json({ message: 'Erro ao atualizar placar da partida' })
