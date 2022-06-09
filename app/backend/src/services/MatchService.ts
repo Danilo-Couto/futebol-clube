@@ -6,8 +6,8 @@ import TeamModel from '../database/models/TeamModel';
 export default class MatchService {
   constructor(private matchModel = MatchModel) { }
 
-  findAll = async () =>
-    this.matchModel.findAll({
+  allMatches = async () =>{
+    return this.matchModel.findAll({
       include: [
         {
           model: TeamModel,
@@ -21,9 +21,29 @@ export default class MatchService {
         },
       ],
     })
-  ;
+  };
 
-  create = async (body: IMatch) => {
+  findByQuery = async (inProgress: boolean | undefined) => {  
+    if (!inProgress) return this.allMatches();
+
+    return await this.matchModel.findAll({
+      where: { inProgress },
+      include: [
+        {
+          model: TeamModel,
+          as: 'teamHome',
+          attributes: { exclude: ['id'] },
+        }, {
+          model: TeamModel,
+          as: 'teamAway',
+          attributes: { exclude: ['id'] },
+        }],
+    }); 
+  }
+;
+
+
+create = async (body: IMatch) => {
     const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress } = body;
     const match = { message: '', matchCreated: {} };
 

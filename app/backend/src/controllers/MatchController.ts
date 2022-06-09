@@ -6,10 +6,14 @@ import TeamService from '../services/TeamService';
 export default class MatchController {
   constructor(private matchService = new MatchService()) { }
 
-  public findAll = async (_req: Request, res: Response) => {
-    const matches = await this.matchService.findAll();
+  public findAll = async (req: Request, res: Response) => {
+    const { inProgress } = req.query;
+    const isTrue = inProgress === 'true';
+    const toogle = inProgress ? isTrue : undefined; // logica da Mariana Saraiva 16B
+    const matches = await this.matchService.findByQuery(toogle);
+
     return (!matches)
-      ? res.status(401).json({ message: 'Erro: Matches not found' })
+      ? res.status(401).json({ message: 'Matches not found' })
       : res.status(200).json(matches);
   };
   
@@ -31,10 +35,9 @@ export default class MatchController {
   public finishMatch = async (req: Request, res: Response) => {
     const { id } = req.params;
     const updatedMatch = await this.matchService.finishMatch(Number(id));
-    console.log(updatedMatch);
 
     return !updatedMatch
-      ? res.status(401).json({ message: 'Erro ao finalizar partida' })
+      ? res.status(401).json({ message: 'Fail to finish match' })
       : res.status(200).json({ message: 'Finished' });
   };
 
@@ -46,7 +49,7 @@ export default class MatchController {
       .updateScore(Number(id), Number(homeTeamGoals), Number(awayTeamGoals));
 
     return !updatedMatch
-      ? res.status(401).json({ message: 'Erro ao atualizar placar da partida' })
+      ? res.status(401).json({ message: 'Fail to update match' })
       : res.status(200).json({ message: updatedMatch });
   };
 }
