@@ -13,7 +13,7 @@ const loginScheme = JOI.object({
 export const isLoginValid = (req: Request, _res: Response, next: NextFunction) => {
   const { email, password } = req.body;
   const { error } = loginScheme.validate({ email, password });
-  if (error) throw error
+  if (error) return next({ status: 400, message: 'All fields must be filled' });
   next();
 };
 
@@ -30,7 +30,7 @@ export const isTokenExists = async (req: Request, _res: Response, next: NextFunc
 export const isTeamsExists = async (req: Request, _res: Response, next: NextFunction) => {
   const { homeTeam, awayTeam } = req.body;
   const arrayTeams = await Promise.all([homeTeam, awayTeam].map(async (team) => new TeamService().findByPk(team)));
-  
+
   if (arrayTeams.some((team) => team === null)) return next({ status: 404, message: noTeam });
   return next();
 }
