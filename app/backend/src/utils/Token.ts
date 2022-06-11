@@ -11,6 +11,6 @@ const generatedToken = (userFound: IUser) => {
   return token;
 };
 
-const verifiedToken = (token: string) => jwt.verify(token, secret);
+const verifiedToken = async (token: string) => jwt.verify(token, secret);
 
 export { generatedToken, verifiedToken };

@@ -8,7 +8,6 @@ export default class MatchModel extends Model {
   awayTeam: number;
   awayTeamGoals: number;
   inProgress: boolean;
-  // teamHome: any;
 }
 
 MatchModel.init({

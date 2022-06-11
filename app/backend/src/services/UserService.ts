@@ -16,10 +16,10 @@ export default class UserService {
 
   login = async (email: string, reqPass: string) => {
     const userFound = await this.getUserByEmail(email);
-    if (!userFound) return accessDenied;
+    if (!userFound) return { error: accessDenied};
 
     const isValidPass = await bcryptjs.compare(reqPass, userFound.password);
-    if (!isValidPass) return accessDenied;
+    if (!isValidPass) return { error: accessDenied};
     
     const token = generatedToken(userFound);
     const { id, username, role } = userFound;

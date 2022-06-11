@@ -18,20 +18,20 @@ export const isLoginValid = (req: Request, _res: Response, next: NextFunction) =
 };
 
 export const isTokenExists = async (req: Request, _res: Response, next: NextFunction) => {
-  const token = req.headers.authorization;
-  if (!token) return next({ status: 401, message: 'Token not found' });
+    const token = req.headers.authorization;
+    if (!token) return next({ status: 401, message: 'Token not found' });
+    
+    const decoded = await verifiedToken(token);
+    if (!decoded) return next({ status: 401, message: 'Not Authorized' });
 
-  const decoded = verifiedToken(token);
-  if (!decoded) return next({ status: 401, message: 'Not Authorized' });
-
-  req.body.userFound = decoded;
-  return next();
+    req.body.userFound = decoded;
+    return next();    
 }
+
 export const isTeamsExists = async (req: Request, _res: Response, next: NextFunction) => {
   const { homeTeam, awayTeam } = req.body;
   const arrayTeams = await Promise.all([homeTeam, awayTeam].map(async (team) => new TeamService().findByPk(team)));
-
-  if (arrayTeams.some((team) => team === null)) return next({ status: 404, message: noTeam });
+  if (arrayTeams.some((team) => !team)) return next({ status: 404, message: noTeam });
   return next();
 }
 

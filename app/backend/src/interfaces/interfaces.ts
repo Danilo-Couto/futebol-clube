@@ -12,7 +12,7 @@ export interface JwtConfig {
 
 // USER
 export interface IUser {
-  dataValues?: any;
+  // dataValues?: any
   id: number;
   username: string;
   role: string;
@@ -31,11 +31,7 @@ export interface IUserModel {
 // LOGIN
 export interface IloginService {
   login(email: string, password: string): Promise<any>
-  validateLogin?(req: Request, res: Response): Promise<any>
-}
-
-export interface ILoginModel { // talves não precise deste, apenas passar esta assinatura para IUserModel
-  findOne(user: { where: { email: string; }; }): any;
+  validateLogin(req: Request, res: Response): Promise<any>
 }
 
 // TEAMS
@@ -45,7 +41,7 @@ export interface ITeam {
 }
 export interface ITeamService {
   findAll():Promise<ITeam[]>
-  findByPk(id: any):Promise<ITeam>;
+  findByPk(id: number):Promise<ITeam>;
 }
 
 // MATCHES
@@ -57,3 +53,6 @@ export interface IMatch {
   awayTeamGoals: number;
   inProgress: boolean;
 }
+
+// LEADERBOARD
+

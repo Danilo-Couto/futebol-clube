@@ -1,7 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import { verifiedToken } from '../utils/Token';
 import MatchService from '../services/MatchService';
-import TeamService from '../services/TeamService';
 
 export default class MatchController {
   constructor(private matchService = new MatchService()) { }
@@ -25,11 +23,11 @@ export default class MatchController {
       : res.status(200).json(match);
   };
 
-  public create = async (req: Request, res: Response) => {
-    const matchCreated = await this.matchService.create(req.body);
-    return matchCreated.message
-      ? res.status(401).json({ message: matchCreated.message })
-      : res.status(201).json(matchCreated.matchCreated);
+  public create = async (req: Request, res: Response, next: NextFunction) => {
+    const result = await this.matchService.create(req.body);
+    return result.error
+      ? res.status(401).json({ message: result.error })
+      : res.status(201).json(result.matchCreated);        
   };
 
   public finishMatch = async (req: Request, res: Response) => {
@@ -53,4 +51,3 @@ export default class MatchController {
       : res.status(200).json({ message: updatedMatch });
   };
 }
-

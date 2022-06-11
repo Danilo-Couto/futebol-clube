@@ -45,14 +45,11 @@ export default class MatchService {
 
 create = async (body: IMatch) => {
     const { homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress } = body;
-    const match = { message: '', matchCreated: {} };
-
-    if (homeTeam === awayTeam) {
-      match.message = 'It is not possible to create a match with two equal teams';
+    if (homeTeam === awayTeam) return { error: 'It is not possible to create a match with two equal teams'}
+    
+    return { matchCreated:
+      await this.matchModel.create({homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress}, { raw: true })
     }
-    const matchCreated = await this.matchModel.create({homeTeam, awayTeam, homeTeamGoals, awayTeamGoals, inProgress}, { raw: true });
-    match.matchCreated = matchCreated;
-    return match;
   };
 
   findByPk = async (id: Identifier | undefined) => this.matchModel.findByPk(id, { raw: true });
