@@ -55,7 +55,7 @@ describe('Desenvolva o endpoint /teams/:id no back-end de forma que ele possa re
     (TeamModel.findOne as sinon.SinonStub).restore();
   })
 
-  it('2. Deve ser uma rota GET com resposta com status 200 e com um json contendo o retorno no seguinte modelo:', async () => {  
+  it('Deve ser uma rota GET com resposta com status 200 e com um json contendo o retorno no seguinte modelo:', async () => {  
     const teams ={ id: 5, teamName: 'Cruzeiro'}
     chaiHttpResponse = await chai
        .request(app)
