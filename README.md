@@ -1,10 +1,8 @@
 # Boas vindas ao repositório do Trybe Futebol Clube!
 
-O `TFC` é um site informativo sobre partidas e classificações de futebol! ⚽️
+O TFC é um site informativo sobre partidas e classificações de futebol.
 
-É uma API (utilizando o método `TDD`) e também integrada *- através do docker-compose -* as aplicações para que elas funcionem consumindo um banco de dados.
-
-Nesse projeto, construi **um back-end dockerizado utilizando modelagem de dados através do Sequelize**, respeitando regras de negócio** providas no projeto e uma API capaz de ser consumida por um front-end já provido nesse projeto previamente pela Trybe**.
+Nesse projeto, foi desenvolvido um back-end dockerizado utilizando modelagem de dados através do Sequelize, respeitando regras de negócio e uma API capaz de ser consumida por um front-end já provido nesse projeto previamente pela Trybe.
 
 Resumo:
 - Dockerização dos apps, network, volume e compose;
