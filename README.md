@@ -1,28 +1,5 @@
 # Boas vindas ao repositório do Trybe Futebol Clube!
 
-Para realizar o projeto, atente-se a cada passo descrito a seguir, e se tiver qualquer dúvida, nos envie por _Slack_! #vqv 🚀
-
-Aqui você vai encontrar os detalhes de como estruturar o desenvolvimento do seu projeto a partir deste repositório, utilizando uma branch específica e um _Pull Request_ para colocar seus códigos.
-
-# Termos e acordos
-
-Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta e do Manual da Pessoa Estudante da Trybe.
-
-# Entregáveis
-
-<details>
-  <summary><strong>🤷🏽‍♀️ Como entregar</strong></summary><br />
-
-  Para entregar o seu projeto você deverá criar um *Pull Request* neste repositório.
-
-  Lembre-se que você pode consultar nosso conteúdo sobre [Git & GitHub](https://app.betrybe.com/course/4d67f5b4-34a6-489f-a205-b6c7dc50fc16/) e nosso [Blog - Git & GitHub](https://blog.betrybe.com/tecnologia/git-e-github/) sempre que precisar!
-</details>
-
-<details>
-  <summary><strong>👨‍💻 O que deverá ser desenvolvido</strong></summary><br />
-
-  ![Exemplo app front](assets/front-example.png)
-
   O `TFC` é um site informativo sobre partidas e classificações de futebol! ⚽️
 
   No time de desenvolvimento do `TFC`, seu *squad* ficou responsável por desenvolver uma API (utilizando o método `TDD`) e também integrar *- através do docker-compose -* as aplicações para que elas funcionem consumindo um banco de dados.
@@ -32,234 +9,6 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   Para adicionar uma partida é necessário pessoa usuária e senha, portanto a pessoa deverá estar logada para fazer as alterações. Teremos um relacionamento entre as tabelas `teams` e `matches` para fazermos as atualizações das partidas.
 
   O seu back-end deverá implementar regras de negócio para popular adequadamente a tabela disponível no front-end que será exibida para a pessoa usuária do sistema.
-
-</details>
-
-<details>
-  <summary><strong>🗓 Data de Entrega</strong></summary><br />
-
-  * Projeto individual;
-  * Serão `7` dias de projeto;
-  * Data de entrega para avaliação final do projeto: `21/06/2022 14:00`.
-
-</details>
-
-# Orientações
-
-<details>
-  <summary><strong>‼️ Antes de começar a desenvolver</strong></summary><br />
-
-  1. Clone o repositório
-    * `git clone https://github.com/tryber/sd-016-b-trybe-futebol-clube.git`.
-    * Entre na pasta do repositório que você acabou de clonar:
-      * `cd sd-016-b-trybe-futebol-clube`
-
-  2. Instale as dependências [**Caso existam**]
-    * `npm install`
-
-  3. Crie uma branch a partir da branch `master`
-    * Verifique que você está na branch `master`
-      * Exemplo: `git branch`
-    * Se não estiver, mude para a branch `master`
-      * Exemplo: `git checkout master`
-    * Agora crie uma branch à qual você vai submeter os `commits` do seu projeto
-      * Você deve criar uma branch no seguinte formato: `nome-de-usuario-nome-do-projeto`
-      * Exemplo: `git checkout -b joaozinho-sd-016-b-trybe-futebol-clube`
-
-  4. Adicione as mudanças ao _stage_ do Git e faça um `commit`
-    * Verifique que as mudanças ainda não estão no _stage_
-      * Exemplo: `git status` (deve aparecer listada a pasta _joaozinho_ em vermelho)
-    * Adicione o novo arquivo ao _stage_ do Git
-        * Exemplo:
-          * `git add .` (adicionando todas as mudanças - _que estavam em vermelho_ - ao stage do Git)
-          * `git status` (deve aparecer listado o arquivo _joaozinho/README.md_ em verde)
-    * Faça o `commit` inicial
-        * Exemplo:
-          * `git commit -m 'iniciando o projeto x'` (fazendo o primeiro commit)
-          * `git status` (deve aparecer uma mensagem tipo _nothing to commit_ )
-
-  5. Adicione a sua branch com o novo `commit` ao repositório remoto
-    * Usando o exemplo anterior: `git push -u origin joaozinho-sd-016-b-trybe-futebol-clube`
-
-  6. Crie um novo `Pull Request` _(PR)_
-    * Vá até a página de _Pull Requests_ do [repositório no GitHub](https://github.com/tryber/sd-0x-project-[nome-do-projeto]/pulls)
-    * Clique no botão verde _"New pull request"_
-    * Clique na caixa de seleção _"Compare"_ e escolha a sua branch **com atenção**
-    * Clique no botão verde _"Create pull request"_
-    * Adicione uma descrição para o _Pull Request_ e clique no botão verde _"Create pull request"_
-    * **Não se preocupe em preencher mais nada por enquanto!**
-    * Volte até a [página de _Pull Requests_ do repositório](https://github.com/tryber/sd-0x-project-[nome-do-projeto]/pulls) e confira que o seu _Pull Request_ está criado
-
-</details>
-
-<details>
-  <summary><strong>⌨️ Durante o desenvolvimento</strong></summary><br />
-
-* ⚠️ **As alterações que você fizer no arquivo `app/backend/packages.json` serão descartadas no momento da avaliação.**
-
-* ⚠️ **Para adicionar pacotes adicionais ao back-end, utilize o arquivo `app/backend/packages.npm`, separando os pacotes adicionais por espaços ou quebras de linha.** Exemplo:
-
-  ```text
-  cors
-  @types/cors
-  ```
-
-</br>
-
-* Versione seu projeto
-
-  * Faça `commits` das alterações que você fizer no código regularmente;
-
-  * Lembre-se de sempre após um (ou alguns) `commits` atualizar o repositório remoto.
-
-  * Os comandos que você utilizará com mais frequência são:
-    1. `git status` _(para verificar o que está em vermelho - fora do stage - e o que está em verde - no stage)_;
-    2. `git add` _(para adicionar arquivos ao stage do Git)_;
-    3. `git commit` _(para criar um commit com os arquivos que estão no stage do Git)_;
-    4. `git push -u nome-da-branch` _(para enviar o commit para o repositório remoto na primeira vez que fizer o `push` de uma nova branch)_;
-    5. `git push` _(para enviar o commit para o repositório remoto após o passo anterior)_.
-
-</details>
-
-<details>
-  <summary><strong>🎛 Linter</strong></summary><br />
-
-  Para garantir a qualidade do código, usaremos o [ESLint](https://eslint.org/) para fazer a sua análise estática.
-
-  Este projeto já vem com as dependências relacionadas ao _linter_ configuradas nos arquivos `package.json` nos seguintes caminhos:
-
-  - `sd-016-b-trybe-futebol-clube/app/backend/package.json`
-
-  Para rodar o `ESLint` em um projeto, basta executar o comando `npm install` dentro do projeto e depois `npm run lint`. Se a análise do `ESLint` encontrar problemas no seu código, tais problemas serão mostrados no seu terminal. Se não houver problema no seu código, nada será impresso no seu terminal.
-
-  Você também pode instalar o plugin do `ESLint` no `VSCode`: bastar ir em extensions e baixar o [plugin `ESLint`](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint).
-
-  ⚠ PULL REQUESTS COM ISSUES DE LINTER NÃO SERÃO AVALIADAS. ATENTE-SE PARA RESOLVÊ-LAS ANTES DE FINALIZAR O DESENVOLVIMENTO! ⚠
-
-</details>
-
-<details>
-  <summary><strong>⚠️ Configurações mínimas nas máquinas locais para rodar o projeto</strong></summary><br />
-
-  - Sistema Operacional Distribuição Unix
-  - Node versão 16  
-  - Docker
-  - Docker-compose versão 1.29.2
-
-
-</details>
-
-<details>
-  <summary><strong>⚠️ Informações importantes sobre o projeto</strong></summary><br />
-
-  ### ⚠️ Leia os requisitos atentamente e siga à risca o que for pedido. ⚠️
-
-  O não cumprimento de um requisito, total ou parcialmente, impactará na sua avaliação.
-
-  #### ⚠️ **Inicie seu `docker-compose` antes de testar localmente!** ⚠️
-
-  Os testes vão utilizar a sua aplicação do compose para fazer as validações, por tanto **é essencial que ela esteja funcionando corretamente** para que os testes passem!
-
-  - Para isso, garanta que as aplicações, tanto do back, quanto do front-end, possuem arquivos `Dockerfile` válidos;
-  - Utilize os scripts de apoio `npm run compose:up` / `npm run compose:down`, para facilitar a execução do seu *compose*.
-
-  #### Variáveis de ambiente
-
-  **Você irá precisar configurar as variáveis globais do MySQL.** Você pode usar esse [Conteúdo de variáveis de ambiente com NodeJS](https://blog.rocketseat.com.br/variaveis-ambiente-nodejs/) como referência.
-
-  **Faça essas configurações também para as variáveis de ambiente usadas nesses arquivo:**
-
-  `sd-016-b-trybe-futebol-clube/app/backend/src/database/config/database.ts`
-
-  ```
-  module.exports = {
-    username: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    database: TRYBE_FUTEBOL_CLUBE,
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    dialect: 'mysql',
-  };
-
-  ```
-
-  **(Neste arquivo é obrigatório deixar o nome da database como `"database": 'TRYBE_FUTEBOL_CLUBE'`)**
-
-  **É essencial usar essas 3 variáveis no arquivo acima:**
-
-  #### Variáveis:
-
-  `host: process.env.DB_HOST`;
-
-  `user: process.env.DB_USER`;
-
-  `password: process.env.DB_PASS`.
-
-  **Com essas variáveis iremos conseguir fazer a conexão ao banco do avaliador automático**
-
-  **⚠️ Variáveis de ambiente além das especificadas acima não são suportadas, pois não são esperadas pelo avaliador do projeto. ⚠️**
-
-  #### Chave JWT e criptografia de senhas:
-
-  ⚠️ A sua chave `JWT` deve ser inserida em `app/backend/jwt.evaluation.key` e deve ser carregada no back-end com o uso da biblioteca `fs`.
-
-  ⚠️ A biblioteca utilizada para criptografar a senha no banco de dados é a `bcryptjs` [bcryptjs npm](https://www.npmjs.com/package/bcryptjs). Utilize especificamente essa biblioteca, ela pode ser colocada como dependência em `app/backend/package.json`, mas lembre-se de adicioná-la depois em `app/backend/packages.npm` para que o avaliador realize a instalação dela no projeto para avaliação. ⚠️
-
-  #### Testes de cobertura
-
-  A construção de testes de cobertura no back-end deve ser feita em *TypeScript*, utilizando `mocha`, `chai` e `sinon`, na pasta `app/backend/src/tests/`, conforme o exemplo em `app/backend/src/tests/change.me.test.ts` *(aqui considerando um teste de integração)*:
-
-  ```typescript
-  import * as sinon from 'sinon';
-  import * as chai from 'chai';
-  // @ts-ignore
-  import chaiHttp = require('chai-http');
-
-  import { app } from '../app';
-  import Example from '../database/models/ExampleModel';
-
-  import { Response } from 'superagent';
-
-  chai.use(chaiHttp);
-
-  const { expect } = chai;
-
-  describe('Seu teste', () => {
-    /**
-     * Exemplo do uso de stubs com tipos
-     */
-
-    // let chaiHttpResponse: Response;
-
-    // before(async () => {
-    //   sinon
-    //     .stub(Example, "findOne")
-    //     .resolves({
-    //       ...<Seu mock>
-    //     } as Example);
-    // });
-
-    // after(()=>{
-    //   (Example.findOne as sinon.SinonStub).restore();
-    // })
-
-    // it('...', async () => {
-    //   chaiHttpResponse = await chai
-    //      .request(app)
-    //      ...
-
-    //   expect(...)
-    // });
-
-    it('Seu sub-teste', () => {
-      expect(false).to.be.eq(true);
-    });
-  });
-  ```
-
-  Os testes devem cobrir todos os arquivos contidos em `app/backend/src`, com exceção daqueles que já foram entregues com o projeto.
-
-  Para rodar testes de cobertura no seu back-end, utilize o comando: `npm run test:coverage`
 
 </details>
 
@@ -314,9 +63,6 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
       Seu service do back-end no docker-compose deve ter o `depends_on` exatamente igual ao do arquivo docker-compose.example.yml.
       Use o modelo de serviço do banco de dados que está no arquivo `app/docker-compose.example.yml`, que está igual ao formato abaixo:
 
-  > Lembre-se, você pode revisitar os conteúdos sobre Docker:
-  > - [Dockerfile](https://app.betrybe.com/course/back-end/docker/manipulacao-e-criacao-de-imagens-no-docker/e92d2393-3508-43ab-8a67-2b2516d25864) (Seção Dockerfile - Comandos Básicos)
-  > - [docker-compose](https://app.betrybe.com/course/back-end/docker/orquestrando-containers-com-docker-compose/6e8afaef-566a-47f2-9246-d3700db7a56a) (Seção Compose File - Parte I)
 
   ``` yml
   version: '3.9'
@@ -373,49 +119,6 @@ Ao iniciar este projeto, você concorda com as diretrizes do Código de Conduta 
   ⚠️ O avaliador utiliza os mesmos valores das variáveis de ambiente contidas no docker-compose, por exemplo `DB_USER`, `DB_PASS`, `DB_HOST` e as portas que os containers devem utilizar. **Por mais que seja possível alterar algumas delas e ajustar os testes para continuarem funcionais, recomendamos fortemente a não alterá-las.**
 
 </details>
-
-<details>
-  <summary><strong>🤝 Depois de terminar o desenvolvimento (opcional)</strong></summary><br />
-
-  Para "entregar" seu projeto, siga os passos a seguir:
-
-  - Vá até a página DO SEU Pull Request, adicione a label de "code-review" e marque seus colegas
-    - No menu à direita, clique no *link* "Labels" e escolha a label code-review
-    - No menu à direita, clique no *link* "Assignees" e escolha o seu usuário
-    - No menu à direita, clique no *link* "Reviewers" e digite students, selecione o time tryber/students-sd-016-b
-
-  Se ainda houver alguma dúvida sobre como entregar seu projeto, [aqui tem um video explicativo](https://vimeo.com/362189205).
-  :warning: **Lembre-se de garantir que todas as _issues_ comentadas pelo Linter estão resolvidas!** :warning:
-
-</details>
-
-<details>
-  <summary><strong>🗣 Nos dê feedbacks sobre o projeto!</strong></summary><br />
-
-Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência preenchendo o formulário. 
-**Leva menos de 3 minutos!**
-
-[FORMULÁRIO DE AVALIAÇÃO DE PROJETO](https://be-trybe.typeform.com/to/ZTeR4IbH)
-
-:warning: **O avaliador automático não necessariamente avalia seu projeto na ordem em que os requisitos aparecem no readme. Isso acontece para deixar o processo de avaliação mais rápido. Então, não se assuste se isso acontecer, ok?**
-
-</details>
-
-<details>
-  <summary><strong>🗂 Compartilhe seu portfólio!</strong></summary><br />
-
-  Você sabia que o LinkedIn é a principal rede social profissional e compartilhar o seu aprendizado lá é muito importante para quem deseja construir uma carreira de sucesso? Compartilhe esse projeto no seu LinkedIn, marque o perfil da Trybe (@trybe) e mostre para a sua rede toda a sua evolução.
-
-</details>
-
-<br />
-
-<details>
-  <summary><strong>⚠️⚠ Pré-requisitos ⚠⚠️</strong></summary><br />
-
-  ⚠️ Para que esse projeto faça a avaliação corretamente, **sua aplicação deve ter um funcionamento mínimo**.
-
-  Isso porque, o avaliador **irá executar um teste de usabilidade E2E** *(End-to-end, ou Ponto a ponto. Leia mais sobre esse tipo de teste [nesse link](https://app.betrybe.com/course/real-life-engineer/e2e_tests_puppeteer))*, acompanhado de validações adicionais *(Compilação do TypeScript e inicialização do Sequelize)* que podem ser acompanhados pelo uso do script `npm run test:debug`;
 
   #### Premissas gerais
 
@@ -845,7 +548,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   - Será recebido o `id` pelo parâmetro da URL;
 
   - Será validado que ao finalizar uma partida é alterado no banco de dados e na página.
-	
+
   - Deve-se retornar, com um status `200`, a seguinte mensagem:
 
   ```json
@@ -1008,7 +711,7 @@ Ao finalizar e submeter o projeto, não se esqueça de avaliar sua experiência 
   - O endpoint deverá ser do tipo `GET` e ter o retorno como descrito no exemplo do [leaderboard](#leaderboards)
 
   - Será avaliado que ao fazer a requisição ao endpoint `/leaderboard/home` serão retornados os campos e valores corretos considerando os dados iniciais do banco de dados
-	
+
   - OBS: Um time `mandante` é quando o mesmo é o time da casa.
 
 ### 30 - Desenvolva o endpoint `/leaderboard/home`, de forma que seja possível filtrar a classificações dos times quando mandantes na tela de classificação do front-end e ao inserir a partida Corinthians 2 X 1 Internacional a tabela será atualizada
